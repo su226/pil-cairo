@@ -1,0 +1,31 @@
+[project]
+name = "pil-cairo"
+version = "1.0.0"
+description = "Fast conversion between Pillow `Image` and PyCairo `ImageSurface`."
+readme = "README.md"
+authors = [
+    { name = "su226", email = "thesu226@outlook.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pillow>=12.0.0",
+    "pycairo>=1.29.0",
+]
+
+[tool.maturin]
+module-name = "pil_cairo._core"
+python-packages = ["pil_cairo"]
+python-source = "src"
+
+[tool.uv]
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[dependency-groups]
+test = [
+    "numpy>=2.2.6",
+    "pytest>=9.0.1",
+]
