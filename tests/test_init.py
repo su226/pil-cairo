@@ -54,8 +54,8 @@ SIZES = [1, 32, 99]
 THRESHOLD = 1
 # Formats without alpha and rounding.
 A1_A8_RGB24_THRESHOLD = 0
-# max(abs(x - x * 31 // 255 * 255 // 31) for x in range(256))
-RGB_TO_RGB16_THRESHOLD = 9
+# max(abs(x - round(round(x * 31 / 255) * 255 / 31)) for x in range(256))
+RGB_TO_RGB16_THRESHOLD = 4
 
 
 def test_to_cairo__1() -> None:
